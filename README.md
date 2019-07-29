@@ -188,13 +188,236 @@ const browserHistory = createBrowserHistory();
 
 `<Route/>` is a component rendered some UI when a location matches it's path.
 
+#### Route render methods:
+
 Houter provides multipile ways to render something with `<Route/>`:
 
 ```js
 import { BrowserRouter } from "houter";
 
-
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Route
+        path="/"
+        exact
+        render={({ location, match, history }) => <div>Home</div>}
+      />
+      <Route path="/foo" component={Foo} />
+      <Route
+        path="/boo"
+        children={({ location, match, history }) => <div>boo</div>}
+      />
+    </BrowserRouter>
+  );
+};
 ```
+
+#### Route props:
+
+All three render methods will be passed the same three route props:
+
+- [location](#location)
+- [match](#match)
+- [history](#history)
+
+#### **path:string|string[]**
+
+Any valid URL path or arrays of paths that [path-to-regexp@^3.0.0](https://github.com/pillarjs/path-to-regexp/tree/v3.0.0) understands.
+
+Route always match without a path.
+
+#### **component:ReactComponent**
+
+A React component to be rendered when current location matches the route's path.It will be rendered with route props.
+
+#### **render:function**
+
+Inline rendering and wrapping without the undesired remounting explained above.
+
+**Warining**:if you using `component` and `render` both in the same `<Route/>`,the `component` prop will takes precedence over `render`.
+
+#### **children:function|ReactElement**
+
+`<Route/>` **always** rendering the children whether the current location matches route's path or not.
+
+#### **exact:boolean**
+
+When true the regexp will match to the end of the string.(default: false)
+
+| path | location.pathname | exact | maches |
+| ---- | ----------------- | ----- | ------ |
+| /boo | /boo/foo          | true  | false  |
+| /boo | /boo/foo          | false | true   |
+
+#### **strict:boolean**
+
+When true the regexp allows an optional trailing delimiter to match. (default: false)
+
+| path  | location.pathname | strict | maches |
+| ----- | ----------------- | ------ | ------ |
+| /boo/ | /boo              | true   | false  |
+| /boo/ | /boo              | false  | true   |
+
+#### **sensitive:boolean**
+
+When true the regexp will be case sensitive. (default: false)
+
+| path  | location.pathname | sensitive | maches |
+| ----- | ----------------- | --------- | ------ |
+| /BOO/ | /boo              | true      | false  |
+| /boo/ | /boo              | true      | true   |
+| /Boo/ | /boo              | false     | true   |
+
+#### **location:object**
+
+### `<Switch/>`
+
+`<Switch/>` always render the first matched `<Route/>` component.
+
+See the differences between these two demo below:
+
+```js
+import { Switch, Route } from "houter";
+
+const App = () => {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/foo" component={Foo} />
+      <Route path="/boo" component={Boo} />
+    </Switch>
+  );
+};
+
+location.pathname = "/";
+//Render <Home/>
+location.pathname = "/foo";
+//Render <Home/>
+location.pathname = "/boo";
+//Render <Home/>
+```
+
+```js
+import { Switch, Route } from "houter";
+
+const App = () => {
+  return (
+    <Switch>
+      <Route path="/foo" component={Foo} />
+      <Route path="/boo" component={Boo} />
+      <Route path="/" component={Home} />
+    </Switch>
+  );
+};
+
+location.pathname = "/";
+//Render <Home/>
+location.pathname = "/foo";
+//Render <Foo/>
+location.pathname = "/boo";
+//Render <Boo/>
+```
+
+### `<Link/>`
+
+`<Link/>` component renders an `<a />` element that, when clicked, performs a navigation. You can customize the link appearance by providing your own component or link element as children:
+
+```js
+import { Link } from "houter";
+// It will produce the ReactElement like
+//`<a href="/" onClick={()=>history.push('/)}>Hello!</a>`
+<Link to="/">
+  <a>Hello!</a>
+</Link>
+
+// It will produce the ReactElement like
+//`<a href="/" onClick={()=>history.push('/)}></a>`
+<Link to="/">
+</Link>
+
+// It will produce the ReactElement like
+//<a href="/" onClick={()=>history.push('/)}>
+//  <div>Hello!</div>
+//  <span>Welcome!</span>
+//</a>`
+<Link to="/">
+  <div>Hello!</div>
+  <span>Welcome!</span>
+</Link>
+
+// It will produce the ReactElement like
+//<App href="/" onClick={()=>history.push('/)}>Hello!</div>
+<Link to="/">
+  <App>Hello!</App>
+</Link>
+```
+
+### `<Redirect/>`
+
+`<Redirect/>` will performing a redirect to a path provided when mounted.
+Witout a provided path, `<Redirect/>` will doing nothing when mounted.
+
+```js
+import { Redirect } from "houter";
+//It will redirect to '/foo'  when mounted.
+<Redirect path="/foo" />;
+```
+
+### location
+
+A Location represents where the app now,where the app want to go,or where the app it was.
+
+It looks like this:
+
+```js
+{
+  key:"ac3df4",
+  pathname:'/',
+  search:'?a=b&c=d',
+  hash:"#",
+  state:{
+    [key]:value
+  }
+}
+```
+
+The route will provide location object in a few places:
+
+- [`<Route render/>`](#render:function) as ({ location }) =>()
+- [`<Route component/>`](#component:ReactComponent) as this.props.location
+- [`<Route children/>`](#children:function|ReactElement) as ({location}) =>()
+- [`useRoute()`](#useRoute) as { location } = useRoute()
+
+### match
+
+A Match object represents how a `<Route/>` matched the current URL.
+
+It contains these properties below:
+
+```ts
+type match = {
+  isExact: boolean;
+  params: {
+    [key]: value;
+  };
+  path: string;
+  url: string;
+};
+```
+
+The list of ways obtaining `match` object:
+
+- [`<Route render/>`](#render:function) as ({match}) =>()
+- [`<Route component/>`](#component:ReactComponent) as this.props.match
+- [`<Route children/>`](#children:function|ReactElement) as ({match}) =>()
+- [`useRoute()`](#useRoute) as {match} = useRoute()
+
+### history
+
+A History object offers a set of methods to perform navigation,it refers to the [history package](https://github.com/ReactTraining/history).
+
+See more infomations at [history](https://github.com/ReactTraining/history).
 
 ## Hooks API
 
