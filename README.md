@@ -63,7 +63,7 @@ Houter has two kinds of APIs:low-level [React Hook-based](https://reactjs.org/do
 
 ### `<BrowserRouter/>`
 
-A `<Router>` that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
+A [`<Router>`](#Router) that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
 
 ```js
 import { BrowserRouter } from "houter";
@@ -118,7 +118,7 @@ The length of location.key
 
 ### `<HashRouter/>`
 
-A `<Router>` that uses the hash portion(window.location.hash) to keep your UI in sync with the URL.
+A [`<Router>`](#router) that uses the hash portion(window.location.hash) to keep your UI in sync with the URL.
 
 ```js
 import { HashRouter } from "houter";
@@ -136,7 +136,7 @@ The base URL for all locations. A properly formatted basename should have a lead
 
 #### **hashType:string**
 
-By default `<HashRouter/>` uses a leading slash in hash-based URLs. You can use the hashType option to use a different hash formatting.
+By default [`<HashRouter/>`](#HashRouter) uses a leading slash in hash-based URLs. You can use the hashType option to use a different hash formatting.
 
 ```js
 <HashRouter
@@ -186,7 +186,7 @@ const browserHistory = createBrowserHistory();
 
 ### `<Route/>`
 
-`<Route/>` is a component rendered some UI when a location matches it's path.
+**`<Route/>`** is a component rendered some UI when a location matches it's path.
 
 #### Route render methods:
 
@@ -235,11 +235,11 @@ A React component to be rendered when current location matches the route's path.
 
 Inline rendering and wrapping without the undesired remounting explained above.
 
-**Warining**:if you using `component` and `render` both in the same `<Route/>`,the `component` prop will takes precedence over `render`.
+**Warining**:if you using **component** and **render** both in the same [`<Route/>`](#route),the **component** prop will takes precedence over **render**.
 
 #### **children:function|ReactElement**
 
-`<Route/>` **always** rendering the children whether the current location matches route's path or not.
+[`<Route/>`](#route) **always** rendering the children whether the current location matches route's path or not.
 
 #### **exact:boolean**
 
@@ -388,10 +388,11 @@ The route will provide location object in a few places:
 - [`<Route component/>`](#component:ReactComponent) as this.props.location
 - [`<Route children/>`](#children:function|ReactElement) as ({location}) =>()
 - [`useRoute()`](#useRoute) as { location } = useRoute()
+- [`useRouter()`](#useRouter) as { location } = useRouter()
 
 ### match
 
-A Match object represents how a `<Route/>` matched the current URL.
+A Match object represents how a [`<Route/>`](#Route) matched the current URL.
 
 It contains these properties below:
 
@@ -412,6 +413,7 @@ The list of ways obtaining `match` object:
 - [`<Route component/>`](#component:ReactComponent) as this.props.match
 - [`<Route children/>`](#children:function|ReactElement) as ({match}) =>()
 - [`useRoute()`](#useRoute) as {match} = useRoute()
+- [`useRouter()`](#useRouter) as { match } = useRouter()
 
 ### history
 
@@ -422,6 +424,10 @@ See more infomations at [history](https://github.com/ReactTraining/history).
 ## Hooks API
 
 React's new "[Hooks](https://reactjs.org/docs/hooks-intro.html)" APIs give function components the ability to use local component state, execute side effects, and more.
+
+### `useRouter`：
+
+The `useRouter` hooks let you have access to [`history`](#history) object and the closest [`<Route/>`](#route)'s match object.
 
 ### `useRoute`:
 
@@ -461,6 +467,8 @@ const CustomizeRoute = () => {
   );
 };
 ```
+
+
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
