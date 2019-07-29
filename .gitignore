@@ -4,6 +4,7 @@
 /lib
 /node_modules
 /umd
+/meta
 npm-debug.log*
 yarn.lock
 yarn-error.log
