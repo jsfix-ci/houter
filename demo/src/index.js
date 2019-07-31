@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import { useRoute, Router, Switch, Route } from "../../src";
-import { createBrowserHistory } from "history";
-const history = createBrowserHistory();
-const h1 = () => <h1>h1</h1>;
-console.log("works");
+
+import { HashRouter, Route, useRoute } from "../../src";
+console.log(HashRouter, "H");
+
+const U = () => {
+  const { match } = useRoute({path:"/",exact:true});
+  return <div>match:{JSON.stringify(match)}</div>;
+};
 class Demo extends Component {
   render() {
     return (
-      <Router history={history}>
-        <Switch>
-        <Route exact path="/" component={h1} />
-          <Route
-            path="/:baa"
-            render={({ match }) => <h3>{match.params.baa}</h3>}
-          />
- 
-          <Route path="/foo" render={() => <h2>123</h2>} />
-        </Switch>
-      </Router>
+      <HashRouter>
+        <U />
+        <Route path={["/a",'/b']} render={({location})=>`${location.pathname}`}/>
+        <h1>11</h1>
+      </HashRouter>
     );
   }
 }

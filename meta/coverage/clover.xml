@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1564138099597" clover="3.2.0">
-  <project timestamp="1564138099597" name="All files">
-    <metrics statements="93" coveredstatements="93" conditionals="77" coveredconditionals="75" methods="23" coveredmethods="23" elements="193" coveredelements="191" complexity="0" loc="93" ncloc="93" packages="1" files="8" classes="8"/>
+<coverage generated="1564480873888" clover="3.2.0">
+  <project timestamp="1564480873888" name="All files">
+    <metrics statements="94" coveredstatements="94" conditionals="81" coveredconditionals="79" methods="23" coveredmethods="23" elements="198" coveredelements="196" complexity="0" loc="94" ncloc="94" packages="1" files="8" classes="8"/>
     <file name="Link.tsx" path="C:\Users\EDZ\OneDrive\repo\houter\src\Link.tsx">
       <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <line num="4" count="1" type="stmt"/>
@@ -25,23 +25,24 @@
       <line num="11" count="2" type="stmt"/>
     </file>
     <file name="Route.tsx" path="C:\Users\EDZ\OneDrive\repo\houter\src\Route.tsx">
-      <metrics statements="16" coveredstatements="16" conditionals="25" coveredconditionals="25" methods="3" coveredmethods="3"/>
+      <metrics statements="17" coveredstatements="17" conditionals="29" coveredconditionals="29" methods="3" coveredmethods="3"/>
       <line num="7" count="2" type="stmt"/>
       <line num="11" count="29" type="stmt"/>
-      <line num="12" count="27" type="cond" truecount="2" falsecount="0"/>
-      <line num="13" count="27" type="stmt"/>
-      <line num="14" count="27" type="cond" truecount="4" falsecount="0"/>
-      <line num="15" count="9" type="stmt"/>
-      <line num="19" count="27" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="27" type="cond" truecount="4" falsecount="0"/>
+      <line num="14" count="27" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="27" type="cond" truecount="4" falsecount="0"/>
+      <line num="17" count="9" type="stmt"/>
       <line num="22" count="27" type="stmt"/>
-      <line num="26" count="2" type="stmt"/>
-      <line num="37" count="19" type="stmt"/>
-      <line num="46" count="17" type="cond" truecount="2" falsecount="0"/>
-      <line num="47" count="17" type="cond" truecount="4" falsecount="0"/>
-      <line num="48" count="1" type="stmt"/>
-      <line num="50" count="17" type="cond" truecount="2" falsecount="0"/>
-      <line num="51" count="2" type="stmt"/>
-      <line num="53" count="17" type="stmt"/>
+      <line num="23" count="27" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="27" type="stmt"/>
+      <line num="34" count="2" type="stmt"/>
+      <line num="45" count="19" type="stmt"/>
+      <line num="54" count="17" type="cond" truecount="2" falsecount="0"/>
+      <line num="55" count="17" type="cond" truecount="4" falsecount="0"/>
+      <line num="56" count="1" type="stmt"/>
+      <line num="58" count="17" type="cond" truecount="2" falsecount="0"/>
+      <line num="59" count="2" type="stmt"/>
+      <line num="61" count="17" type="stmt"/>
     </file>
     <file name="Router.tsx" path="C:\Users\EDZ\OneDrive\repo\houter\src\Router.tsx">
       <metrics statements="22" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="9" coveredmethods="9"/>

@@ -8,9 +8,7 @@ A tiny routing solution inspired by **[wouter](https://github.com/molefrog/woute
 
 - Familiar [React Route](https://reacttraining.com/react-router/) API & patterns: [`<BrowserRouter>`](#BrowserRouter), [`<HashRouter>`](#HashRouter) , [`<Route>`](#Route) , [`<Link/>`](#Link) , [`<Redirect/>`](#Redirect) and [`<Switch/>`](#Switch).
 - Has hook-based API for more granular control over routing (like animations): **[useLocation](#useLocation)**, **[useRoute](#useRoute)** and **[useRouter](#useRouter)**.
-- Written in **TypeScript** and will make it easier for you to type your React code
-
-## Why do this
+- Written in **TypeScript** and will make it easier for you to type your React code.
 
 ## Install
 
@@ -37,7 +35,7 @@ const App = () => (
 );
 ```
 
-## Houter API
+## Core API
 
 Houter has two kinds of APIs:low-level [React Hook-based](https://reactjs.org/docs/hooks-intro.html) API and more traditional component-based API similar to [React Route](https://reacttraining.com/react-router/)'s one.
 
@@ -384,9 +382,9 @@ It looks like this:
 
 The route will provide location object in a few places:
 
-- [`<Route render/>`](#render:function) as ({ location }) =>()
-- [`<Route component/>`](#component:ReactComponent) as this.props.location
-- [`<Route children/>`](#children:function|ReactElement) as ({location}) =>()
+- [`<Route render/>`](#renderfunction) as ({ location }) =>()
+- [`<Route component/>`](#componentReactComponent) as this.props.location
+- [`<Route children/>`](#childrenfunctionReactElement) as ({location}) =>()
 - [`useRoute()`](#useRoute) as { location } = useRoute()
 - [`useRouter()`](#useRouter) as { location } = useRouter()
 
@@ -409,9 +407,9 @@ type match = {
 
 The list of ways obtaining `match` object:
 
-- [`<Route render/>`](#render:function) as ({match}) =>()
-- [`<Route component/>`](#component:ReactComponent) as this.props.match
-- [`<Route children/>`](#children:function|ReactElement) as ({match}) =>()
+- [`<Route render/>`](#renderfunction) as ({match}) =>()
+- [`<Route component/>`](#componentReactComponent) as this.props.match
+- [`<Route children/>`](#childrenfunctionReactElement) as ({match}) =>()
 - [`useRoute()`](#useRoute) as {match} = useRoute()
 - [`useRouter()`](#useRouter) as { match } = useRouter()
 
@@ -425,9 +423,13 @@ See more infomations at [history](https://github.com/ReactTraining/history).
 
 React's new "[Hooks](https://reactjs.org/docs/hooks-intro.html)" APIs give function components the ability to use local component state, execute side effects, and more.
 
-### `useRouter`：
+### `useRouter`:
 
-The `useRouter` hooks let you have access to [`history`](#history) object and the closest [`<Route/>`](#route)'s match object.
+The `useRouter` hooks let you have access to the lastest [history](#history) object and the closest [\<Route/\>'s match](#match) object.
+
+```js
+const { location, match, history } = useRouter();
+```
 
 ### `useRoute`:
 
@@ -436,12 +438,12 @@ matches th current location by using an `useRoute` hook .
 
 ```ts
 useRoute(
-  options?:string|string[]|{
+  options:string|string[]|{
     path?:string|string[],
     exact?:boolean,
     sensitive?:boolean,
     strict?:boolean
-  }, location?:object);
+  }={}, location?:object);
 ```
 
 ```js
@@ -468,7 +470,17 @@ const CustomizeRoute = () => {
 };
 ```
 
+### `useLocation`
 
+You can get access to the [location](#location) object’s properties and performing a navigation via the **useLocation** hook.
+
+```js
+
+const App = () => {
+  const [location, push, replace] = useLocation();
+  return <div onClick={() => push("/")}>go to Home</div>;
+};
+```
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo

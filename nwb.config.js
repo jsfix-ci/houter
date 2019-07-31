@@ -1,18 +1,17 @@
 module.exports = {
-  type: "react-component",
+  type: 'react-component',
   npm: {
     esModules: false,
     umd: false
   },
-
-  webpack: {
+  webpack:{
     extra: {
       resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx"]
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
       module: {
-        rules: [{ test: /\.(tsx|ts)$/, loader: "ts-loader" }]
-      }
-    }
+        rules: [{test: /\.(ts|tsx)$/, loader: 'ts-loader'}],
+      },
+    },
   }
 };

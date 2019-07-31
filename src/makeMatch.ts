@@ -1,4 +1,4 @@
-import toReg, { Key } from "path-to-regexp";
+import pathToRegexp, { Key } from "path-to-regexp";
 import { Options, Match } from "./types";
 
 interface Cache {
@@ -26,7 +26,7 @@ const toRegWithCache = (
   const pathCache = cache[key] || (cache[key] = {});
   if (pathCache[path]) return pathCache[path];
   const keys: Array<Key> = [];
-  const regexp = toReg(path, keys, {
+  const regexp = pathToRegexp(path, keys, {
     end: exact,
     sensitive,
     strict
@@ -37,7 +37,7 @@ const toRegWithCache = (
 
 export const makeMatch = (
   currentPath: string,
-  options: Options|string|string[]={}
+  options: Options | string | string[] = {}
 ) => {
   if (typeof options === "string" || Array.isArray(options)) {
     options = {
@@ -48,7 +48,7 @@ export const makeMatch = (
 
   const paths = ([] as Array<string | undefined>).concat(path);
 
-  return paths.reduce((matched:Match, path) => {
+  return paths.reduce((matched: Match, path) => {
     if (!path) return null;
     if (matched) return matched;
     const { regexp, keys } = toRegWithCache(path, {
@@ -73,4 +73,3 @@ export const makeMatch = (
     };
   }, null);
 };
-

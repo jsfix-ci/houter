@@ -1,25 +1,33 @@
-import React, { useContext, useMemo } from "react";
+import React, { useMemo } from "react";
 import { RouteProps, Options, Location, RouteComponentProps } from "./types";
 import { useRouter } from "./Router";
 import { makeMatch } from "./makeMatch";
 import RouterContext from "./context";
 
 const useRoute = (
-  options: Options | string | Array<string> = {},
+  _options: Options | string | Array<string> = {},
   location?: Location
 ) => {
   const ctx = useRouter();
+  let options: Options =
+    typeof _options === "object" && !Array.isArray(_options) ? _options : {};
   location = location ? location : ctx.location;
+
+  if (typeof _options === "string" || Array.isArray(_options)) {
+    options = {
+      path: _options
+    };
+  }
+
   return useMemo<RouteComponentProps>(() => {
-    if (typeof options === "string" || Array.isArray(options)) {
-      options = {
-        path: options
-      };
-    }
     const match = !options.path
       ? ctx.match
-      : makeMatch((location as Location).pathname, options);
-    return { location: location as Location, match, history: ctx.history };
+      : makeMatch(location!.pathname, options);
+    return {
+      location: location!,
+      match,
+      history: ctx.history
+    };
   }, [options, location, ctx]);
 };
 

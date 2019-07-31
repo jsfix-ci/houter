@@ -45,6 +45,7 @@ describe("<Route/> render element when matched", () => {
         />
       </BrowserRouter>
     );
+    expect(window.location.pathname).toBe('/')
     expect(wrapper.find("h1").text()).toBe("haha");
     wrapper.find("h1").simulate("click");
     expect(wrapper.find("h1").text()).toBe("foo");

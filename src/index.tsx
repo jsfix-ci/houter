@@ -17,19 +17,7 @@ const houter = {
   Redirect,
   Switch
 };
-export {
-  useRouter,
-  BrowserRouter,
-  HashRouter,
-  Router,
-  Route,
-  useRoute,
-  useLocation,
-  Link,
-  Redirect,
-  Switch
-};
-export default houter;
 
+export default houter;
 
 export * from "./types";
