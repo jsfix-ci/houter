@@ -1,7 +1,7 @@
 # houter
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
+[![Travis](https://img.shields.io/travis/LinTmiN/houter/master.png?style=flat-square)](https://travis-ci.org/LinTmiN/houter.svg?branch=master)
+[![npm package](https://img.shields.io/npm/v/houter.png?style=flat-square)]( https://www.npmjs.org/package/houter)
 [![Coverage Status](https://coveralls.io/repos/github/LinTmiN/houter/badge.svg?branch=master)](https://coveralls.io/github/LinTmiN/houter?branch=master)
 
 A tiny routing solution inspired by **[wouter](https://github.com/molefrog/wouter)** and **[React Route](https://reacttraining.com/react-router/)** for React App .
@@ -482,9 +482,4 @@ const App = () => {
 };
 ```
 
-[build-badge]: https://img.shields.io/travis/LinTmiN/houter/master.png?style=flat-square
-[build]: https://travis-ci.org/LinTmiN/houter.svg?branch=master
-[npm-badge]: https://img.shields.io/npm/v/houter.png?style=flat-square
-[npm]: https://www.npmjs.org/package/houter
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+
