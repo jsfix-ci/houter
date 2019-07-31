@@ -16,11 +16,11 @@ export default [
     external: ["react","path-to-regexp",'history'],
     output: [
       {
-        file: "./cjs/index.js",
+        file: "./lib/index.js",
         format: "cjs",
       },
       {
-        file: "./lib/index.js",
+        file: "./es/index.js",
         format: "es",
       }
     ]

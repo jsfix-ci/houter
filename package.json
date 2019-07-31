@@ -1,11 +1,12 @@
 {
   "name": "houter",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "houter React component",
-  "main": "cjs/index.js",
-  "module": "lib/index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "files": [
-    "lib"
+    "lib",
+    "es"
   ],
   "scripts": {
     "build": "rollup -c ./config/rollup.config.js",
