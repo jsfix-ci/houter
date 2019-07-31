@@ -1,6 +1,6 @@
 {
   "name": "houter",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "houter React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -46,6 +46,7 @@
       "limit": "1143 B"
     }
   ],
+
   "babel": {
     "presets": [
       "react-app"
@@ -53,7 +54,7 @@
   },
   "author": "LAM",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/LinTmiN/houter",
   "keywords": [
     "react-component"
   ]
