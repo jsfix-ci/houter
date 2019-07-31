@@ -76,6 +76,9 @@ import { BrowserRouter } from "houter";
 </BrowserRouter>;
 ```
 
+### **props:**
+
+
 #### **basename: string**
 
 If all the URLs in your app are relative to some other "base" URL, use the basename option. This option transparently adds the given string to the front of all URLs you use.
@@ -218,6 +221,8 @@ All three render methods will be passed the same three route props:
 - [location](#location)
 - [match](#match)
 - [history](#history)
+
+### **Props:**
 
 #### **path:string|string[]**
 
