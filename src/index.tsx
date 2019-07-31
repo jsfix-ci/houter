@@ -5,7 +5,7 @@ import { Link } from "./Link";
 import { Redirect } from "./Redirect";
 import { Switch } from "./Switch";
 
-const houter = {
+export {
   useRouter,
   BrowserRouter,
   HashRouter,
@@ -16,8 +16,6 @@ const houter = {
   Link,
   Redirect,
   Switch
-};
-
-export default houter;
+}
 
 export * from "./types";
