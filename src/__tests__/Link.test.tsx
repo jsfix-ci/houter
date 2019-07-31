@@ -12,7 +12,7 @@ describe("<Link/> works", () => {
   });
 
   it("performs a navigation when `onClick` trigger", () => {
-    const wrapper = mountInBrowserRouter(
+    const { wrapper } = mountInBrowserRouter(
       <Link path="/foo">
         <div>abc</div>
       </Link>
@@ -23,7 +23,7 @@ describe("<Link/> works", () => {
 
   it("accepts an `onClick` props,fired after the navigation", () => {
     let idx = 0;
-    const wrapper = mountInBrowserRouter(
+    const { wrapper } = mountInBrowserRouter(
       <Link onClick={() => idx++} path="/foo">
         <div>abc</div>
       </Link>
@@ -31,23 +31,22 @@ describe("<Link/> works", () => {
     wrapper.find("div").simulate("click");
     expect(window.location.pathname).toBe("/foo");
     expect(idx).toBe(1);
-
   });
   it("not performs a navigation,only fired `onClick()`", () => {
     let idx = 0;
 
-    const wrapper = mountInBrowserRouter(
+    const { wrapper } = mountInBrowserRouter(
       <Link onClick={() => idx++}>
         <div>abc</div>
       </Link>
     );
-    const prevPathname=window.location.pathname
+    const prevPathname = window.location.pathname;
     wrapper.find("div").simulate("click");
     expect(idx).toBe(1);
-    expect(window.location.pathname).toBe(prevPathname)
+    expect(window.location.pathname).toBe(prevPathname);
   });
   it("wrap children in <a> when received not single object children", () => {
-    const wrapper = mountInBrowserRouter(
+    const { wrapper } = mountInBrowserRouter(
       <BrowserRouter>
         <Link to="/foo">
           <div>abc</div>

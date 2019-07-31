@@ -19,7 +19,7 @@ const useRoute = (
     };
   }
 
-  return useMemo<RouteComponentProps>(() => {
+  return useMemo(() => {
     const match = !options.path
       ? ctx.match
       : makeMatch(location!.pathname, options);
@@ -58,15 +58,16 @@ const Route = ({
   if (typeof children === "function") {
     children = children(props);
   }
+
   return (
     <RouterContext.Provider value={props}>
       {children
         ? children
-        : props.match
+        : props.match !== null
         ? component
-          ? React.createElement(component, props)
+          ? React.createElement(component, props as RouteComponentProps)
           : render
-          ? render(props)
+          ? render(props as RouteComponentProps)
           : null
         : null}
     </RouterContext.Provider>

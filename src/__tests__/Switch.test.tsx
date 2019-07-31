@@ -6,13 +6,13 @@ import { act } from "react-dom/test-utils";
 const h = () => <h1>h1</h1>;
 
 describe("<Switch/> works", () => {
-  const wrap = (path, jsx) => {
-    window.history.replaceState(null, null, path);
+  const wrap = (path?: string, jsx?: any) => {
+    window.history.replaceState(null, "", path);
     return mountInBrowserRouter(jsx);
   };
 
   it("works well when nothing is provided", () => {
-    const wrapper = wrap();
+    const { wrapper } = wrap();
     expect(wrapper.find(Switch).children()).toHaveLength(0);
   });
 
@@ -21,7 +21,7 @@ describe("<Switch/> works", () => {
       <Route key="0" exact path="/" component={h} />,
       <Route key="1" path="/foo" render={() => <h2 />} />
     ];
-    const wrapper = wrap(
+    const { wrapper, history } = wrap(
       "/",
       <Switch>
         {r}
@@ -33,16 +33,16 @@ describe("<Switch/> works", () => {
     );
     expect(window.location.pathname).toBe("/");
     expect(wrapper.find("h1").text()).toBe("h1");
-    act(() => wrapper.history.push("/foo"));
+    act(() => history.push("/foo"));
     wrapper.update();
     expect(wrapper.find("h2").html()).toBe("<h2></h2>");
-    act(() => wrapper.history.push("/abb"));
+    act(() => history.push("/abb"));
     wrapper.update();
     expect(wrapper.find("h3").html()).toBe("<h3>abb</h3>");
   });
 
   it("always render no path prop <Route/>", () => {
-    const wrapper = wrap(
+    const { wrapper, history } = wrap(
       "/",
       <Switch>
         <Route component={h} />
@@ -50,12 +50,12 @@ describe("<Switch/> works", () => {
       </Switch>
     );
     expect(wrapper.find("h1").html()).toBe("<h1>h1</h1>");
-    act(() => wrapper.history.push("/foo"));
+    act(() => history.push("/foo"));
     expect(wrapper.find("h2").exists()).toBe(false);
   });
 
   it("render nothing when pass nonthing insinde <Switch/>", () => {
-    const wrapper = wrap("/", <Switch />);
+    const { wrapper } = wrap("/", <Switch />);
     expect(
       wrapper
         .find(Switch)

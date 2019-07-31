@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, useRoute } from "../Route";
 
-import { BrowserRouter, HashRouter,useRouter } from "../Router";
+import { BrowserRouter, HashRouter, useRouter } from "../Router";
 import { mount, mountInBrowserRouter } from "./testutils";
 import { act } from "react-dom/test-utils";
 
-
-
 beforeEach(() => {
-  window.history.replaceState(null, null, "/");
+  window.history.replaceState(null, "", "/");
 });
 describe("<Route/> render element when matched", () => {
   it("throws erros", () => {
@@ -45,7 +43,7 @@ describe("<Route/> render element when matched", () => {
         />
       </BrowserRouter>
     );
-    expect(window.location.pathname).toBe('/')
+    expect(window.location.pathname).toBe("/");
     expect(wrapper.find("h1").text()).toBe("haha");
     wrapper.find("h1").simulate("click");
     expect(wrapper.find("h1").text()).toBe("foo");
@@ -114,9 +112,9 @@ describe("useRoute() works", () => {
       const { match } = useRoute("/foo");
       return match ? <div>foo</div> : null;
     };
-    const wrapper = mountInBrowserRouter(<C />);
+    const { wrapper,history } = mountInBrowserRouter(<C />);
     expect(wrapper.exists("div")).toBe(false);
-    act(() => wrapper.history.push("/foo"));
+    act(() => history.push("/foo"));
     expect(window.location.pathname).toBe("/foo");
     wrapper.update();
     expect(wrapper.find("div").text()).toBe("foo");
@@ -129,15 +127,15 @@ describe("useRoute() works", () => {
       return match ? <div>{location.pathname}</div> : null;
     };
 
-    const wrapper = mountInBrowserRouter(<C />);
-    wrapper.history.push("/");
+    const { wrapper, history } = mountInBrowserRouter(<C />);
+    history.push("/");
     wrapper.update();
     expect(wrapper.exists("div")).toBe(false);
-    act(() => wrapper.history.push("/foo"));
+    act(() => history.push("/foo"));
     expect(window.location.pathname).toBe("/foo");
     wrapper.update();
     expect(wrapper.find("div").text()).toBe("/foo");
-    act(() => wrapper.history.push("/boo"));
+    act(() => history.push("/boo"));
     wrapper.update();
     expect(wrapper.find("div").text()).toBe("/boo");
     wrapper.unmount();
@@ -155,29 +153,23 @@ describe("useRoute() works", () => {
         </div>
       );
     };
-    const wrapper=mountInBrowserRouter(<C/>)
-    act(()=>wrapper.history.push('/'))
-    wrapper.update()
-    expect(wrapper.find('h1').html()).toBe("<h1>/</h1>")
-    expect(wrapper.find('span').html()).toBe("<span>/</span>")
-    act(()=>wrapper.history.push('/foo'))
-    wrapper.update()
-    expect(wrapper.find('h1').html()).toBe("<h1>/</h1>")
-    expect(wrapper.find('span').html()).toBe("<span>/foo</span>")
-    
+    const { wrapper, history } = mountInBrowserRouter(<C />);
+    act(() => history.push("/"));
+    wrapper.update();
+    expect(wrapper.find("h1").html()).toBe("<h1>/</h1>");
+    expect(wrapper.find("span").html()).toBe("<span>/</span>");
+    act(() => history.push("/foo"));
+    wrapper.update();
+    expect(wrapper.find("h1").html()).toBe("<h1>/</h1>");
+    expect(wrapper.find("span").html()).toBe("<span>/foo</span>");
   });
 
-  it('always match when pass nothing',()=>{
+  it("always match when pass nothing", () => {
     const C = () => {
-      const { match} = useRoute();
-      return (
-        <div>
-          {match ? <h1 ></h1> : null}
-        </div>
-      );
+      const { match } = useRoute();
+      return <div>{match ? <h1 /> : null}</div>;
     };
-    const wrapper=mountInBrowserRouter(<C/>)
-    expect(wrapper.find('h1').exists()).toBe(true)
-  })
-
+    const { wrapper } = mountInBrowserRouter(<C />);
+    expect(wrapper.find("h1").exists()).toBe(true);
+  });
 });

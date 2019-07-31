@@ -1,18 +1,17 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Router } from "../Router";
 import { createBrowserHistory, createHashHistory } from "history";
 import { mount } from "enzyme";
-const mountInBrowserRouter = jsx => {
+const mountInBrowserRouter = (jsx: ReactNode) => {
   const history = createBrowserHistory();
   const wrapper = mount(<Router history={history}>{jsx}</Router>);
-  wrapper.history = history;
-  return wrapper;
+
+  return { wrapper, history };
 };
 
-const mountInHashRouter = jsx => {
+const mountInHashRouter = (jsx: ReactNode) => {
   const history = createHashHistory();
   const wrapper = mount(<Router history={history}>{jsx}</Router>);
-  wrapper.history = history;
-  return wrapper;
+  return { wrapper, history };
 };
 export { mountInBrowserRouter, mountInHashRouter, mount };

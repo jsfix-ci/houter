@@ -6,7 +6,8 @@ import { makeMatch } from "./makeMatch";
 const Switch = (props: SwitchProps) => {
   const ctx = useRouter();
   const location = props.location || ctx.location;
-  let match: Match | undefined, element: ReactElement<RouteProps> | undefined;
+  let match: Match | null | undefined,
+    element: ReactElement<RouteProps> | undefined;
   //
   React.Children.forEach(props.children, child => {
     if (match == null && React.isValidElement(child)) {

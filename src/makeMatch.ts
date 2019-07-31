@@ -48,7 +48,7 @@ export const makeMatch = (
 
   const paths = ([] as Array<string | undefined>).concat(path);
 
-  return paths.reduce((matched: Match, path) => {
+  return paths.reduce((matched: Match|null, path) => {
     if (!path) return null;
     if (matched) return matched;
     const { regexp, keys } = toRegWithCache(path, {
