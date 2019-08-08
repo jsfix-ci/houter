@@ -27,7 +27,9 @@ describe("<Switch/> works", () => {
         {r}
         <Route
           path="/:baa"
-          render={({ match }) => <h3>{match.params.baa}</h3>}
+          render={({ match }) => (
+            <h3>{match.params.baa}</h3>
+          )}
         />
       </Switch>
     );

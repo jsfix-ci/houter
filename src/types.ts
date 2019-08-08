@@ -15,10 +15,10 @@ export type Match<Params extends { [K in keyof Params]?: string } = {}> = {
   params: Partial<Params>;
 };
 
-export type ctxValue<Params extends { [K in keyof Params]?: string } = {}> = {
+export type ctxValue = {
   history: History;
   location: Location;
-  match: Match<Params> | null;
+  match: Match | null;
 };
 
 export interface RouterProps {
@@ -35,19 +35,23 @@ export type BrowserRouterProps = {
   children?: ReactNode;
 } & BrowserHistoryBuildOptions;
 
-export type HookResult<Params extends { [K in keyof Params]?: string } = {}> = {
+type AA={
+  [k :string] : string
+}
+export type HookResult<
+  Params extends { [k in keyof Params]?: string } = any
+> = {
   location: Location;
   history: History;
-  match: Match<any> | null;
+  match: Match<Params> | null;
 };
 
 type NonNullRecord<T> = { [k in keyof T]: NonNullable<T[k]> };
 
-
 export type RouteComponentProps = NonNullRecord<HookResult>;
 export type RouteProps<Params extends { [K in keyof Params]?: string } = {}> = {
   location?: Location;
-  children?: ReactNode | ((props: HookResult<Params>) => ReactElement);
+  children?: ReactNode | ((props: HookResult) => ReactElement);
   render?: (props: RouteComponentProps) => ReactElement;
   component?: ComponentType<RouteComponentProps>;
   computedMatch?: Match<Params>;
