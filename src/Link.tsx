@@ -6,6 +6,7 @@ const Link = (props: LinkProps) => {
   const href = props.path || props.to;
   const handleClick = React.useCallback(
     e => {
+      e.preventDefault()
       if (href) {
         push(href, props.state);
       }

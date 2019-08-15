@@ -2,8 +2,6 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 
-
-
 storiesOf("Router|HashRouter", module).add("usage", () => (
   <iframe
     src="https://codesandbox.io/embed/hashrouter-f89jv?fontsize=14"
@@ -16,5 +14,7 @@ storiesOf("Router|HashRouter", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:"A `<Router>` that uses the hash portion(window.location.hash) to keep your UI in sync with the URL."
+});
 

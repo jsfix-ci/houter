@@ -1,6 +1,6 @@
 {
   "name": "houter",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "houter React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -26,9 +26,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-info": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addon-notes": "^5.1.11",
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "@types/enzyme": "^3.10.3",
@@ -37,7 +36,6 @@
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "@types/storybook__react": "^4.0.2",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "babel-preset-react-app": "^9.0.0",
     "enzyme": "^3.10.0",

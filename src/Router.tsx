@@ -45,7 +45,7 @@ const Router = ({ history, children }: RouterProps) => {
       setState({ location });
     });
     return ()=>unlisten()
-  }, []);
+  }, [history]);
   return (
     <RouterContext.Provider value={value}>{children}</RouterContext.Provider>
   );
