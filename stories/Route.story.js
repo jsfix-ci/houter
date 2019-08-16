@@ -13,4 +13,6 @@ storiesOf("Component|Route", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:"`<Route/>` is a component rendered some UI when a location matches it's path."
+});

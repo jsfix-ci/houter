@@ -13,4 +13,6 @@ storiesOf("Hook|useRoute", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:'The useRoute hook make accessing router directly easier . You can check if particular route matches th current location by using an useRoute hook .'
+});

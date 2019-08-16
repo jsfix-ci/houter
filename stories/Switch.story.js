@@ -13,4 +13,6 @@ storiesOf("Component|Switch", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:'<Switch/> always render the first matched <Route/> component.'
+});

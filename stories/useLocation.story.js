@@ -13,4 +13,6 @@ storiesOf("Hook|useLocation", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:"You can get access to the location object’s properties and performing a navigation via the **useLocation** hook."
+});

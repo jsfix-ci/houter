@@ -13,4 +13,6 @@ storiesOf("Hook|useRouter", module).add("usage", () => (
       position: "absolute"
     }}
   />
-));
+),{
+  notes:"The `useRouter` hooks let you have access to the lastest [history](#history) object and the closest [\<Route/\>'s match](#match) object."
+});
