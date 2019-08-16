@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react";
-import { SwitchProps, Match, RouteProps } from "./types";
-import { useRouter } from "./Router";
-import { makeMatch } from "./makeMatch";
+import React, { ReactElement } from 'react';
+import { SwitchProps, Match, RouteProps } from './types';
+import { useRouter } from './Router';
+import { makeMatch } from './makeMatch';
 
 const Switch = (props: SwitchProps) => {
   const ctx = useRouter();

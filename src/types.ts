@@ -3,8 +3,8 @@ import {
   Location,
   HashHistoryBuildOptions,
   BrowserHistoryBuildOptions
-} from "history";
-import { ReactElement, ComponentType, ReactNode } from "react";
+} from 'history';
+import { ReactElement, ComponentType, ReactNode } from 'react';
 
 export type History = History;
 export type Location = Location;
@@ -35,9 +35,9 @@ export type BrowserRouterProps = {
   children?: ReactNode;
 } & BrowserHistoryBuildOptions;
 
-type AA={
-  [k :string] : string
-}
+type AA = {
+  [k: string]: string;
+};
 export type HookResult<
   Params extends { [k in keyof Params]?: string } = any
 > = {

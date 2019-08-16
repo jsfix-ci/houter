@@ -1,9 +1,9 @@
-import { useRouter, BrowserRouter, HashRouter, Router } from "./Router";
-import { Route, useRoute } from "./Route";
-import { useLocation } from "./use-location";
-import { Link } from "./Link";
-import { Redirect } from "./Redirect";
-import { Switch } from "./Switch";
+import { useRouter, BrowserRouter, HashRouter, Router } from './Router';
+import { Route, useRoute } from './Route';
+import { useLocation } from './use-location';
+import { Link } from './Link';
+import { Redirect } from './Redirect';
+import { Switch } from './Switch';
 
 export {
   useRouter,
@@ -16,6 +16,6 @@ export {
   Link,
   Redirect,
   Switch
-}
+};
 
-export * from "./types";
+export * from './types';

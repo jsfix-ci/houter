@@ -1,19 +1,19 @@
-import RouterContext from "./context";
-import React, { useContext,  useEffect, useReducer } from "react";
-import { createBrowserHistory, createHashHistory } from "history";
+import RouterContext from './context';
+import React, { useContext, useEffect, useReducer } from 'react';
+import { createBrowserHistory, createHashHistory } from 'history';
 import {
   History,
   RouterProps,
   BrowserRouterProps,
   HashRouterProps
-} from "./types";
+} from './types';
 
 const buildRouter = (history: History) => {
   const match = {
-    path: "/",
-    url: "/",
+    path: '/',
+    url: '/',
     params: {},
-    isExact: history.location.pathname === "/"
+    isExact: history.location.pathname === '/'
   };
   return {
     history,
@@ -23,11 +23,11 @@ const buildRouter = (history: History) => {
 };
 
 const useRouter = () => {
-  const ctx=useContext(RouterContext);
-  if(ctx){
-    return ctx
-  }else{
-    throw Error('You should not use `useRouter()` outside Router')
+  const ctx = useContext(RouterContext);
+  if (ctx) {
+    return ctx;
+  } else {
+    throw Error('You should not use `useRouter()` outside Router');
   }
 };
 
@@ -40,12 +40,15 @@ const Router = ({ history, children }: RouterProps) => {
     buildRouter(history)
   );
 
-  useEffect(() => {
-    const unlisten = history.listen((location) => {
-      setState({ location });
-    });
-    return ()=>unlisten()
-  }, [history]);
+  useEffect(
+    () => {
+      const unlisten = history.listen(location => {
+        setState({ location });
+      });
+      return () => unlisten();
+    },
+    [history]
+  );
   return (
     <RouterContext.Provider value={value}>{children}</RouterContext.Provider>
   );
