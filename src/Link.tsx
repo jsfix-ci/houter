@@ -1,12 +1,12 @@
-import React from "react";
-import { useLocation } from "./use-location";
-import { LinkProps } from "./types";
+import React from 'react';
+import { useLocation } from './use-location';
+import { LinkProps } from './types';
 const Link = (props: LinkProps) => {
-  const [_, push] = useLocation();
+  const push = useLocation()[1];
   const href = props.path || props.to;
   const handleClick = React.useCallback(
     e => {
-      e.preventDefault()
+      e.preventDefault();
       if (href) {
         push(href, props.state);
       }

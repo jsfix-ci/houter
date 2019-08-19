@@ -38,9 +38,7 @@ export type BrowserRouterProps = {
 type AA = {
   [k: string]: string;
 };
-export type HookResult<
-  Params extends { [k in keyof Params]?: string } = any
-> = {
+export type HookResult<Params extends { [k in keyof Params]?: string } = {}> = {
   location: Location;
   history: History;
   match: Match<Params> | null;
@@ -79,12 +77,12 @@ export type SwitchProps = {
   location?: Location;
 };
 
-export type LinkProps = {
+export type LinkProps<State extends { [k in keyof State]?: string } = {}> = {
   to?: string;
   path?: string;
   children?: ReactNode;
   onClick?: (e: React.FormEvent<HTMLAnchorElement>) => void;
-  state?: any;
+  state?: State;
 };
 
 export type RedirectProps = {
