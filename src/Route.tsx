@@ -65,13 +65,14 @@ const Route = ({
   const { match } = props;
   return (
     <RouterContext.Provider value={props}>
-      {children || match !== null
-        ? component
-          ? React.createElement(component, props as RouteComponentProps)
-          : render
-          ? render(props as RouteComponentProps)
-          : null
-        : null}
+      {children ||
+        (match !== null
+          ? component
+            ? React.createElement(component, props as RouteComponentProps)
+            : render
+            ? render(props as RouteComponentProps)
+            : null
+          : null)}
     </RouterContext.Provider>
   );
 };

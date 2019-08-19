@@ -1,38 +1,38 @@
-import React from "react";
-import { Link } from "../Link";
-import { mountInBrowserRouter, mount } from "./testutils";
-import { BrowserRouter } from "../Router";
+import React from 'react';
+import Link from '../Link';
+import { mountInBrowserRouter, mount } from './testutils';
+import { BrowserRouter } from '../Router';
 
-describe("<Link/> works", () => {
-  it("render with errors", () => {
-    jest.spyOn(console, "error").mockImplementation(() => {});
+describe('<Link/> works', () => {
+  it('render with errors', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => {
       mount(<Link path="/" />);
-    }).toThrow("You should not use `useRouter()` outside Router");
+    }).toThrow('You should not use `useRouter()` outside Router');
   });
 
-  it("performs a navigation when `onClick` trigger", () => {
+  it('performs a navigation when `onClick` trigger', () => {
     const { wrapper } = mountInBrowserRouter(
       <Link path="/foo">
         <div>abc</div>
       </Link>
     );
-    wrapper.find("div").simulate("click");
-    expect(window.location.pathname).toBe("/foo");
+    wrapper.find('div').simulate('click');
+    expect(window.location.pathname).toBe('/foo');
   });
 
-  it("accepts an `onClick` props,fired after the navigation", () => {
+  it('accepts an `onClick` props,fired after the navigation', () => {
     let idx = 0;
     const { wrapper } = mountInBrowserRouter(
       <Link onClick={() => idx++} path="/foo">
         <div>abc</div>
       </Link>
     );
-    wrapper.find("div").simulate("click");
-    expect(window.location.pathname).toBe("/foo");
+    wrapper.find('div').simulate('click');
+    expect(window.location.pathname).toBe('/foo');
     expect(idx).toBe(1);
   });
-  it("not performs a navigation,only fired `onClick()`", () => {
+  it('not performs a navigation,only fired `onClick()`', () => {
     let idx = 0;
 
     const { wrapper } = mountInBrowserRouter(
@@ -41,11 +41,11 @@ describe("<Link/> works", () => {
       </Link>
     );
     const prevPathname = window.location.pathname;
-    wrapper.find("div").simulate("click");
+    wrapper.find('div').simulate('click');
     expect(idx).toBe(1);
     expect(window.location.pathname).toBe(prevPathname);
   });
-  it("wrap children in <a> when received not single object children", () => {
+  it('wrap children in <a> when received not single object children', () => {
     const { wrapper } = mountInBrowserRouter(
       <BrowserRouter>
         <Link to="/foo">
@@ -54,6 +54,6 @@ describe("<Link/> works", () => {
         </Link>
       </BrowserRouter>
     );
-    expect(wrapper.find("a").children()).toHaveLength(2);
+    expect(wrapper.find('a').children()).toHaveLength(2);
   });
 });

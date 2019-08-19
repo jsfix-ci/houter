@@ -38,7 +38,9 @@ export type BrowserRouterProps = {
 type AA = {
   [k: string]: string;
 };
-export type HookResult<Params extends { [k in keyof Params]?: string } = {}> = {
+export type HookResult<
+  Params extends { [k in keyof Params]?: string } = any
+> = {
   location: Location;
   history: History;
   match: Match<Params> | null;
