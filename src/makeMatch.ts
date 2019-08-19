@@ -1,5 +1,5 @@
-import pathToRegexp, { Key } from "path-to-regexp";
-import { Options, Match } from "./types";
+import pathToRegexp, { Key } from 'path-to-regexp';
+import { Options, Match } from './types';
 
 interface Cache {
   [i: string]: {
@@ -35,20 +35,25 @@ const toRegWithCache = (
   return result;
 };
 
-export const makeMatch = (
+export default (
   currentPath: string,
   options: Options | string | string[] = {}
 ) => {
-  if (typeof options === "string" || Array.isArray(options)) {
+  if (typeof options === 'string' || Array.isArray(options)) {
     options = {
       path: options
     };
   }
-  const { path, exact = false, sensitive = false, strict = false } = options;
+  const {
+    path: optionPath,
+    exact = false,
+    sensitive = false,
+    strict = false
+  } = options;
 
-  const paths = ([] as Array<string | undefined>).concat(path);
+  const paths = ([] as Array<string | undefined>).concat(optionPath);
 
-  return paths.reduce((matched: Match|null, path) => {
+  return paths.reduce((matched: Match | null, path) => {
     if (!path) return null;
     if (matched) return matched;
     const { regexp, keys } = toRegWithCache(path, {
@@ -63,8 +68,8 @@ export const makeMatch = (
     if (exact && !isExact) return null;
 
     return {
-      url: path === "/" && url === "" ? "/" : url,
-      path: path,
+      url: path === '/' && url === '' ? '/' : url,
+      path,
       isExact: exact,
       params: keys.reduce((result, key, index) => {
         result[key.name] = values[index];

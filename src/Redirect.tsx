@@ -1,6 +1,7 @@
 import React from 'react';
 import { RedirectProps } from './types';
-import { useLocation } from './use-location';
+import useLocation from './use-location';
+
 const Redirect = (props: RedirectProps) => {
   const push = useLocation()[1];
 
@@ -11,4 +12,4 @@ const Redirect = (props: RedirectProps) => {
   return null;
 };
 
-export { Redirect };
+export default Redirect;

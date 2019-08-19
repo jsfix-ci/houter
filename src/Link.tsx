@@ -1,6 +1,7 @@
 import React from 'react';
-import { useLocation } from './use-location';
+import useLocation from './use-location';
 import { LinkProps } from './types';
+
 const Link = (props: LinkProps) => {
   const push = useLocation()[1];
   const href = props.path || props.to;
@@ -10,7 +11,9 @@ const Link = (props: LinkProps) => {
       if (href) {
         push(href, props.state);
       }
-      props.onClick && props.onClick(e);
+      if (props.onClick) {
+        props.onClick(e);
+      }
     },
     [props.onClick, href]
   );
@@ -24,4 +27,4 @@ const Link = (props: LinkProps) => {
   return React.cloneElement(child, pendingProps);
 };
 
-export { Link };
+export default Link;

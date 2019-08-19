@@ -3,13 +3,15 @@ sudo: false
 language: node_js
 node_js:
   - 8
-install: npm install
 before_install:
   - npm install codecov.io coveralls
 
 after_success:
   - cat ./meta/coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   - cat ./meta/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+scripts:
+  - npm run lint
 
 branches:
   only:

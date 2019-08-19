@@ -1,14 +1,13 @@
 import React, { ReactElement } from 'react';
 import { SwitchProps, Match, RouteProps } from './types';
 import { useRouter } from './Router';
-import { makeMatch } from './makeMatch';
+import makeMatch from './makeMatch';
 
 const Switch = (props: SwitchProps) => {
   const ctx = useRouter();
   const location = props.location || ctx.location;
-  let match: Match | null | undefined,
-    element: ReactElement<RouteProps> | undefined;
-  //
+  let match: Match | null | undefined;
+  let element: ReactElement<RouteProps> | undefined;
   React.Children.forEach(props.children, child => {
     if (match == null && React.isValidElement(child)) {
       element = child;
@@ -27,4 +26,4 @@ const Switch = (props: SwitchProps) => {
     : null;
 };
 
-export { Switch };
+export default Switch;

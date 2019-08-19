@@ -1,6 +1,6 @@
-import RouterContext from './context';
 import React, { useContext, useEffect, useReducer } from 'react';
 import { createBrowserHistory, createHashHistory } from 'history';
+import RouterContext from './context';
 import {
   History,
   RouterProps,
@@ -26,9 +26,8 @@ const useRouter = () => {
   const ctx = useContext(RouterContext);
   if (ctx) {
     return ctx;
-  } else {
-    throw Error('You should not use `useRouter()` outside Router');
   }
+  throw Error('You should not use `useRouter()` outside Router');
 };
 
 const Router = ({ history, children }: RouterProps) => {

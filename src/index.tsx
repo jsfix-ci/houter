@@ -1,9 +1,9 @@
 import { useRouter, BrowserRouter, HashRouter, Router } from './Router';
 import { Route, useRoute } from './Route';
-import { useLocation } from './use-location';
-import { Link } from './Link';
-import { Redirect } from './Redirect';
-import { Switch } from './Switch';
+import useLocation from './use-location';
+import Link from './Link';
+import Redirect from './Redirect';
+import Switch from './Switch';
 
 export {
   useRouter,
