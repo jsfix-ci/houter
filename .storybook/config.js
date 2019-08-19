@@ -1,12 +1,13 @@
 import { addParameters,configure } from '@storybook/react';
 
-// automatically import all files ending in *.stories.js
 
 addParameters({
   options:{
     showPanel:false
   }
 })
+// automatically import all files ending in *.js
+
 const req = require.context('../stories', true, /\.js$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));

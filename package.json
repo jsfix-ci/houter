@@ -23,7 +23,7 @@
     "path-to-regexp": "^3.0.0"
   },
   "peerDependencies": {
-    "react": "16.x"
+    "react": "16.8.x"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -76,7 +76,7 @@
   },
   "author": "LAM",
   "license": "MIT",
-  "repository": "https://github.com/LinTmiN/houter",
+  "repository": "https://github.com/lintuming/houter",
   "keywords": [
     "react-component"
   ]
