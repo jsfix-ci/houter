@@ -1,6 +1,7 @@
 sudo: false
 
 language: node_js
+install: npm install
 node_js:
   - 8
 before_install:
@@ -9,10 +10,8 @@ before_install:
 after_success:
   - cat ./meta/coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   - cat ./meta/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-
 scripts:
   - npm run lint
-
 branches:
   only:
     - master
