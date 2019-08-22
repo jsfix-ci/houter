@@ -488,3 +488,6 @@ const App = () => {
 ```
 
 
+## License
+
+houter is [MIT licensed](./License)
