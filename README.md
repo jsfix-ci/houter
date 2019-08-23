@@ -1,8 +1,9 @@
 # houter
 
 [![Travis](https://img.shields.io/travis/lintuming/houter/master.png?style=flat-square)](https://travis-ci.org/lintuming/houter.svg?branch=master)
-[![npm package](https://img.shields.io/npm/v/houter.png?style=flat-square)]( https://www.npmjs.org/package/houter)
+[![npm package](https://img.shields.io/npm/v/houter.png?style=flat-square)](https://www.npmjs.org/package/houter)
 [![Coverage Status](https://coveralls.io/repos/github/lintuming/houter/badge.svg?branch=master)](https://coveralls.io/github/lintuming/houter?branch=master)
+[![LINCENSE](https://img.shields.io/github/license/lintuming/houter?color=blue)](https://img.shields.io/github/license/lintuming/houter?color=blue)
 
 A tiny routing solution inspired by **[wouter](https://github.com/molefrog/wouter)** and **[React Route](https://reacttraining.com/react-router/)** for React App .
 
@@ -21,7 +22,7 @@ npm install houter
 Check out this demo app below in order to get started:
 
 ```js
-import { BrowserRouter, Route } from "houter";
+import { BrowserRouter, Route } from 'houter';
 
 const App = () => (
   <BrowserRouter>
@@ -64,7 +65,7 @@ Houter has two kinds of APIs:low-level [React Hook-based](https://reactjs.org/do
 A [`<Router>`](#Router) that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
 
 ```js
-import { BrowserRouter } from "houter";
+import { BrowserRouter } from 'houter';
 
 <BrowserRouter
   basename={optionalString}
@@ -78,13 +79,12 @@ import { BrowserRouter } from "houter";
 
 ### **props:**
 
-
 #### **basename: string**
 
 If all the URLs in your app are relative to some other "base" URL, use the basename option. This option transparently adds the given string to the front of all URLs you use.
 
 ```js
-import { BrowserRouter } from "houter";
+import { BrowserRouter } from 'houter';
 
 <BrowserRouter basename="/abc" />;
 
@@ -92,7 +92,7 @@ history.listen(location => {
   console.log(location.pathname); // /home
 });
 
-history.push("/home"); // URL is now /abc/home
+history.push('/home'); // URL is now /abc/home
 ```
 
 #### **forceRefresh: boolean**
@@ -104,7 +104,7 @@ If true the router will use full page refreshes on page navigation. You probably
 A function to use to confirm navigation with the user.
 
 ```js
-import { BrowserRouter } from "houter";
+import { BrowserRouter } from 'houter';
 
 <BrowserRouter
   getUserConfirmation={(message, cb) => cb(window.confirm(message))}
@@ -122,7 +122,7 @@ The length of location.key
 A [`<Router>`](#router) that uses the hash portion(window.location.hash) to keep your UI in sync with the URL.
 
 ```js
-import { HashRouter } from "houter";
+import { HashRouter } from 'houter';
 
 <HashRouter
   basename={optionalString}
@@ -144,18 +144,18 @@ By default [`<HashRouter/>`](#HashRouter) uses a leading slash in hash-based URL
   hashType="slash" // the default
 />;
 
-history.push("/home"); // window.location.hash is #/home
+history.push('/home'); // window.location.hash is #/home
 
 <HashRouter
   hashType="noslash" //Omit the leading slash
 />;
 
-history.push("/home"); // window.location.hash is #home
+history.push('/home'); // window.location.hash is #home
 
 <HashRouter
   hashType="hashbang" //Google's legacy AJAX URL format
 />;
-history.push("/home"); // window.location.hash is #!/home
+history.push('/home'); // window.location.hash is #!/home
 ```
 
 #### More infomation at [createHashHitory](https://github.com/ReactTraining/history#usage).
@@ -194,7 +194,7 @@ const browserHistory = createBrowserHistory();
 Houter provides multipile ways to render something with `<Route/>`:
 
 ```js
-import { BrowserRouter } from "houter";
+import { BrowserRouter } from 'houter';
 
 const App = () => {
   return (
@@ -281,7 +281,7 @@ When true the regexp will be case sensitive. (default: false)
 See the differences between these two demo below:
 
 ```js
-import { Switch, Route } from "houter";
+import { Switch, Route } from 'houter';
 
 const App = () => {
   return (
@@ -293,16 +293,16 @@ const App = () => {
   );
 };
 
-location.pathname = "/";
+location.pathname = '/';
 //Render <Home/>
-location.pathname = "/foo";
+location.pathname = '/foo';
 //Render <Home/>
-location.pathname = "/boo";
+location.pathname = '/boo';
 //Render <Home/>
 ```
 
 ```js
-import { Switch, Route } from "houter";
+import { Switch, Route } from 'houter';
 
 const App = () => {
   return (
@@ -314,11 +314,11 @@ const App = () => {
   );
 };
 
-location.pathname = "/";
+location.pathname = '/';
 //Render <Home/>
-location.pathname = "/foo";
+location.pathname = '/foo';
 //Render <Foo/>
-location.pathname = "/boo";
+location.pathname = '/boo';
 //Render <Boo/>
 ```
 
@@ -362,7 +362,7 @@ import { Link } from "houter";
 Witout a provided path, `<Redirect/>` will doing nothing when mounted.
 
 ```js
-import { Redirect } from "houter";
+import { Redirect } from 'houter';
 //It will redirect to '/foo'  when mounted.
 <Redirect path="/foo" />;
 ```
@@ -452,22 +452,22 @@ useRoute(
 ```
 
 ```js
-import { useRoute, BrowserRouter } from "houter";
+import { useRoute, BrowserRouter } from 'houter';
 
 const CustomizeRoute = () => {
   //You can pass any valid URL path or array of paths.
-  const { match, location, history } = useRoute("/foo/:boo");
-  const { match, location, history } = useRoute(["/foo/:boo"]);
+  const { match, location, history } = useRoute('/foo/:boo');
+  const { match, location, history } = useRoute(['/foo/:boo']);
   // or passing an object with specific config.
   const { match, location, history } = useRoute({
-    path: "/foo/:boo", // or ["/foo/:boo",'/',...And any valid URL path you want to be matched]
+    path: '/foo/:boo', // or ["/foo/:boo",'/',...And any valid URL path you want to be matched]
     strict: false,
     sensitive: false,
     exact: false
   });
 
   return (
-    <div onClick={() => history.push("/")}>
+    <div onClick={() => history.push('/')}>
       Location:{location.pathname}
       params:{match.params.boo}
     </div>
@@ -480,13 +480,11 @@ const CustomizeRoute = () => {
 You can get access to the [location](#location) object’s properties and performing a navigation via the **useLocation** hook.
 
 ```js
-
 const App = () => {
   const [location, push, replace] = useLocation();
-  return <div onClick={() => push("/")}>go to Home</div>;
+  return <div onClick={() => push('/')}>go to Home</div>;
 };
 ```
-
 
 ## License
 
