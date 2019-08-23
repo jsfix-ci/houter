@@ -3,7 +3,7 @@
 [![Travis](https://img.shields.io/travis/lintuming/houter/master.png?style=flat-square)](https://travis-ci.org/lintuming/houter.svg?branch=master)
 [![npm package](https://img.shields.io/npm/v/houter.png?style=flat-square)](https://www.npmjs.org/package/houter)
 [![Coverage Status](https://coveralls.io/repos/github/lintuming/houter/badge.svg?branch=master)](https://coveralls.io/github/lintuming/houter?branch=master)
-[![LINCENSE](https://img.shields.io/github/license/lintuming/houter?color=blue)](https://img.shields.io/github/license/lintuming/houter?color=blue)
+[![LICENSE](https://img.shields.io/github/license/lintuming/houter?color=blue)](https://img.shields.io/github/license/lintuming/houter?color=blue)
 
 A tiny routing solution inspired by **[wouter](https://github.com/molefrog/wouter)** and **[React Route](https://reacttraining.com/react-router/)** for React App .
 
