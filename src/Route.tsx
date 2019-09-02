@@ -4,20 +4,24 @@ import { useRouter } from './Router';
 import makeMatch from './makeMatch';
 import RouterContext from './context';
 
+const EMPTY_OBJ = {};
+
 const useRoute = (
-  _options: Options | string | Array<string> = {},
+  _options: Options | string | Array<string> = EMPTY_OBJ,
   _location?: Location
 ) => {
   const ctx = useRouter();
-  let options: Options =
-    typeof _options === 'object' && !Array.isArray(_options) ? _options : {};
-  const location = _location || ctx.location;
+  const options = useMemo(
+    () => {
+      if (typeof _options === 'string' || Array.isArray(_options)) {
+        return { path: _options };
+      }
+      return _options;
+    },
+    [_options]
+  );
 
-  if (typeof _options === 'string' || Array.isArray(_options)) {
-    options = {
-      path: _options
-    };
-  }
+  const location = _location || ctx.location;
 
   return useMemo(
     () => {
