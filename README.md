@@ -325,7 +325,7 @@ location.pathname = '/boo';
 
 ### `<Link/>`
 
-`<Link/>` component renders an `<a />` element that, when clicked, performs a navigation. You can customize the link appearance by providing your own component or link element as children:
+`<Link/>` component renders an `<a/>` element that, when clicked, performs a navigation. You can customize the link appearance by providing your own component or link element as children:
 
 ```js
 import { Link } from "houter";
@@ -360,7 +360,7 @@ import { Link } from "houter";
 ### `<Redirect/>`
 
 `<Redirect/>` will performing a redirect to a path provided when mounted.
-Witout a provided path, `<Redirect/>` will doing nothing when mounted.
+Without a provided path, `<Redirect/>` will doing nothing when mounted.
 
 ```js
 import { Redirect } from 'houter';
@@ -396,7 +396,7 @@ The route will provide location object in a few places:
 
 ### match
 
-A Match object represents how a [`<Route/>`](#Route) matched the current URL.
+A match object represents how a [`<Route/>`](#Route) matched the current URL.
 
 It contains these properties below:
 
