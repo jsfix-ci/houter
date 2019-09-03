@@ -1,6 +1,6 @@
 {
   "name": "houter",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "houter React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -14,7 +14,7 @@
     "start": "nwb serve-react-demo",
     "test": "jest --config ./config/jest.config.js --verbose --coverage --no-cache",
     "test:watch": "jest --config ./config/jest.config.js --watchAll --verbose --coverage --no-cache",
-    "lint":"eslint src/* stories/*",
+    "lint": "eslint src/* stories/*",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
