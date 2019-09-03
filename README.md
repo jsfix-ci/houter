@@ -439,8 +439,8 @@ const { location, match, history } = useRouter();
 
 ### `useRoute`:
 
-The `useRoute` hook make accessing router directly easier . You can check if particular route
-matches th current location by using an `useRoute` hook .
+The `useRoute` hook make accessing router directly easier,You can check if particular route
+matches the current location by using an `useRoute` hook
 
 ```ts
 useRoute(
@@ -461,7 +461,7 @@ const CustomizeRoute = () => {
   const { match, location, history } = useRoute(['/foo/:boo']);
   // or passing an object with specific config.
   const { match, location, history } = useRoute({
-    path: '/foo/:boo', // or ["/foo/:boo",'/',...And any valid URL path you want to be matched]
+    path: '/foo/:boo', // or ["/foo/:boo",'/boo' ]
     strict: false,
     sensitive: false,
     exact: false
