@@ -27,6 +27,19 @@
   "peerDependencies": {
     "react": "16.8.x"
   },
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@storybook/addon-info": "^5.1.11",
