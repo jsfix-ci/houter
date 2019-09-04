@@ -5,7 +5,7 @@ import makeMatch from './makeMatch';
 import RouterContext from './context';
 
 const EMPTY_OBJ = {};
-
+// TODO:shallow equal to check memorize _options and _location
 const useRoute = (
   _options: Options | string | Array<string> = EMPTY_OBJ,
   _location?: Location
