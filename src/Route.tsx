@@ -5,36 +5,34 @@ import makeMatch from './makeMatch';
 import RouterContext from './context';
 
 const EMPTY_OBJ = {};
-// TODO:shallow equal to check memorize _options and _location
+
+const coerceOpt = (options: Options | string | Array<string>) => {
+  if (typeof options === 'string' || Array.isArray(options)) {
+    return { path: options };
+  }
+  return options;
+};
 const useRoute = (
-  _options: Options | string | Array<string> = EMPTY_OBJ,
-  _location?: Location
+  options: Options | string | Array<string> = EMPTY_OBJ,
+  location?: Location
 ) => {
   const ctx = useRouter();
-  const options = useMemo(
-    () => {
-      if (typeof _options === 'string' || Array.isArray(_options)) {
-        return { path: _options };
-      }
-      return _options;
-    },
-    [_options]
-  );
 
-  const location = _location || ctx.location;
+  const resultLocation = location || ctx.location;
 
   return useMemo(
     () => {
-      const match = !options.path
+      const optionsObj = coerceOpt(options);
+      const match = !optionsObj.path
         ? ctx.match
-        : makeMatch(location!.pathname, options);
+        : makeMatch(resultLocation!.pathname, optionsObj);
       return {
-        location: location!,
+        location: resultLocation!,
         match,
         history: ctx.history
       };
     },
-    [options, location, ctx]
+    [options, resultLocation, ctx]
   );
 };
 
