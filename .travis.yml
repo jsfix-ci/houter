@@ -1,11 +1,14 @@
-sudo: false
-
+os:
+  - linux
 language: node_js
-install: npm install
 node_js:
-  - 8
+  - 10
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
 before_install:
-  - npm install codecov.io coveralls
+  - yarn add codecov.io coveralls
 jobs:
   include:
     - stage: release
@@ -19,7 +22,9 @@ after_success:
   - cat ./meta/coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   - cat ./meta/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 scripts:
-  - npm run lint
+  - yarn lint
+  - yarn test
+  - yarn build
 branches:
   only:
     - master
