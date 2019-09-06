@@ -7,7 +7,7 @@ module.exports = {
       modules: true
     },
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react',"prettier"],
   extends: [
     'airbnb',
     'prettier',
@@ -33,6 +33,7 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 0,
     'no-multi-assign':0,
     'import/no-extraneous-dependencies':0,
-    'no-plusplus':0
+    'no-plusplus':0,
+    "prettier/prettier":"error"
   }
 };
