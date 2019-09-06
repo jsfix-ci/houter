@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/lintuming/houter/badge.svg?branch=master)](https://coveralls.io/github/lintuming/houter?branch=master)
 [![LICENSE](https://img.shields.io/github/license/lintuming/houter?color=blue)](./LICENSE)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://lintuming.github.io/houter/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 A tiny routing solution inspired by **[wouter](https://github.com/molefrog/wouter)** and **[React Route](https://reacttraining.com/react-router/)** for React App .
 
