@@ -1,5 +1,8 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
+  env: {
+    jest: true,
+  },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
@@ -9,7 +12,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react',"prettier"],
   extends: [
-    'airbnb',
     'prettier',
     'plugin:react/recommended',
     'plugin:import/typescript',
@@ -30,7 +32,6 @@ module.exports = {
     'no-void':0,
     "no-nested-ternary":0,
     'react/jsx-props-no-spreading': 0,
-    'jsx-a11y/anchor-has-content': 0,
     'no-multi-assign':0,
     'import/no-extraneous-dependencies':0,
     'no-plusplus':0,

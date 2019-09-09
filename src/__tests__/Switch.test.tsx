@@ -1,8 +1,9 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mountInBrowserRouter } from './testutils';
 import Switch from '../Switch';
 import { Route } from '../Route';
-import { act } from 'react-dom/test-utils';
+
 const h = () => <h1>h1</h1>;
 
 describe('<Switch/> works', () => {
