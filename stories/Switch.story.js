@@ -1,9 +1,9 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import CodeSandBox from "./CodeSandBox";
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import CodeSandBox from './CodeSandBox';
 
-storiesOf("Component|Switch", module).add(
-  "usage",
+storiesOf('Component|Switch', module).add(
+  'usage',
   () => (
     <CodeSandBox
       src="https://codesandbox.io/embed/switch-zege9?fontsize=14"
@@ -11,6 +11,6 @@ storiesOf("Component|Switch", module).add(
     />
   ),
   {
-    notes: "<Switch/> always render the first matched <Route/> component."
+    notes: '<Switch/> always render the first matched <Route/> component.'
   }
 );

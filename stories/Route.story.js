@@ -1,9 +1,9 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import CodeSandBox from "./CodeSandBox";
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import CodeSandBox from './CodeSandBox';
 
-storiesOf("Component|Route", module).add(
-  "usage",
+storiesOf('Component|Route', module).add(
+  'usage',
   () => (
     <CodeSandBox
       src="https://codesandbox.io/embed/route-ixhsi?fontsize=14"

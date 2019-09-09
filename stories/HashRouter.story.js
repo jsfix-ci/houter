@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { storiesOf } from "@storybook/react";
-import CodeSandBox from "./CodeSandBox";
+import { storiesOf } from '@storybook/react';
+import CodeSandBox from './CodeSandBox';
 
-storiesOf("Router|HashRouter", module).add(
-  "usage",
+storiesOf('Router|HashRouter', module).add(
+  'usage',
   () => (
     <CodeSandBox
       src="https://codesandbox.io/embed/hashrouter-f89jv?fontsize=14"
@@ -13,6 +13,6 @@ storiesOf("Router|HashRouter", module).add(
   ),
   {
     notes:
-      "A `<Router>` that uses the hash portion(window.location.hash) to keep your UI in sync with the URL."
+      'A `<Router>` that uses the hash portion(window.location.hash) to keep your UI in sync with the URL.'
   }
 );

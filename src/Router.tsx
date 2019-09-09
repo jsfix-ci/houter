@@ -39,15 +39,12 @@ const Router = ({ history, children }: RouterProps) => {
     buildRouter(history)
   );
 
-  useEffect(
-    () => {
-      const unlisten = history.listen(location => {
-        setState({ location });
-      });
-      return () => unlisten();
-    },
-    [history]
-  );
+  useEffect(() => {
+    const unlisten = history.listen(location => {
+      setState({ location });
+    });
+    return () => unlisten();
+  }, [history]);
   return (
     <RouterContext.Provider value={value}>{children}</RouterContext.Provider>
   );

@@ -20,20 +20,17 @@ const useRoute = (
 
   const resultLocation = location || ctx.location;
 
-  return useMemo(
-    () => {
-      const optionsObj = coerceOpt(options);
-      const match = !optionsObj.path
-        ? ctx.match
-        : makeMatch(resultLocation!.pathname, optionsObj);
-      return {
-        location: resultLocation!,
-        match,
-        history: ctx.history
-      };
-    },
-    [options, resultLocation, ctx]
-  );
+  return useMemo(() => {
+    const optionsObj = coerceOpt(options);
+    const match = !optionsObj.path
+      ? ctx.match
+      : makeMatch(resultLocation!.pathname, optionsObj);
+    return {
+      location: resultLocation!,
+      match,
+      history: ctx.history
+    };
+  }, [options, resultLocation, ctx]);
 };
 
 const Route = ({
