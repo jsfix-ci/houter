@@ -21,7 +21,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "history": "^4.9.0",
+    "history": "^5.3.0",
     "path-to-regexp": "^3.0.0"
   },
   "peerDependencies": {
